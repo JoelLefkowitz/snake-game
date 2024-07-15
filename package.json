@@ -1,6 +1,7 @@
 {
   "name": "snake",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/lodash": "^4.17.6",
     "@types/node": "^20.14.10",
     "@types/three": "^0.166.0",
     "html-webpack-plugin": "^5.6.0",
@@ -21,6 +23,8 @@
     "webpack-dev-server": "^5.0.4"
   },
   "dependencies": {
+    "lil-gui": "^0.19.2",
+    "lodash": "^4.17.21",
     "three": "^0.166.1"
   }
 }
