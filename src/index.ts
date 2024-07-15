@@ -1,25 +1,67 @@
-import * as THREE from 'three';
+import {
+  Vector3,
+  PerspectiveCamera,
+  Scene,
+  CylinderGeometry,
+  BoxGeometry,
+  WebGLRenderer,
+  Mesh,
+  MeshNormalMaterial,
+} from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
-const width = window.innerWidth, height = window.innerHeight;
+const width = window.innerWidth;
+const height = window.innerHeight;
 
-const camera = new THREE.PerspectiveCamera( 70, width / height, 0.01, 10 );
-camera.position.z = 1;
+const camera = new PerspectiveCamera(75, width / height, 0.1, 100);
+camera.position.z = 10;
+camera.position.y = 5;
 
-const scene = new THREE.Scene();
+const scene = new Scene();
 
-const geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
-const material = new THREE.MeshNormalMaterial();
+const baseSize = {
+  width: 10,
+  height: 1,
+  depth: 10,
+};
 
-const mesh = new THREE.Mesh( geometry, material );
-scene.add( mesh );
+const lineSize = {
+  radius: 0.25,
+  length: 10,
+};
 
-const renderer = new THREE.WebGLRenderer( { antialias: true } );
-renderer.setSize( width, height );
-renderer.setAnimationLoop( animate );
-document.body.appendChild( renderer.domElement );
+[1, 2, 3, 4, 5].forEach((i) => {
+  addGeometry(
+    new CylinderGeometry(lineSize.radius, lineSize.radius, lineSize.length, 32),
+    new Vector3(0, baseSize.height / 2, i),
+    new Vector3(0, 0, Math.PI / 2),
+  );
+});
 
-function animate( time ) {
-	mesh.rotation.x = time / 2000;
-	mesh.rotation.y = time / 1000;
-	renderer.render( scene, camera );
+addGeometry(new BoxGeometry(baseSize.width, baseSize.height, baseSize.depth));
+
+const renderer = new WebGLRenderer({ antialias: true });
+renderer.setSize(width, height);
+renderer.setAnimationLoop(animate);
+
+document.body.appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(0, 0, 0);
+controls.update();
+
+function animate(time) {
+  renderer.render(scene, camera);
+}
+
+function addGeometry(
+  geometry,
+  position = new Vector3(0, 0, 0),
+  rotation = new Vector3(0, 0, 0),
+  material = new MeshNormalMaterial(),
+) {
+  const mesh = new Mesh(geometry, material);
+  mesh.position.set(position.x, position.y, position.z);
+  mesh.rotation.set(rotation.x, rotation.y, rotation.z);
+  scene.add(mesh);
 }
