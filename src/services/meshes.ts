@@ -15,5 +15,5 @@ export function createMesh(
 }
 
 export function createMeshes() {
-  return [...gridMeshes(), baseMesh(), snakeMesh(0, 0)];
+  return [...gridMeshes(), baseMesh(), snakeMesh()];
 }
