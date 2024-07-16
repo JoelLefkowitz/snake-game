@@ -2,7 +2,6 @@ import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export default {
-  mode: "development",
   entry: "./src/index.ts",
   module: {
     rules: [
