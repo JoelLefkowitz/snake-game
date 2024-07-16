@@ -1,7 +1,9 @@
 import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import CopyPlugin from "copy-webpack-plugin";
 
 export default {
+	mode:"development",
   entry: "./src/index.ts",
   module: {
     rules: [
@@ -19,6 +21,11 @@ export default {
     new HtmlWebpackPlugin({
       template: "src/index.html",
     }),
+	new CopyPlugin({
+		patterns: [
+		  { from: "src/styles.css", to: "styles.css" },
+		],
+	  })
   ],
   devServer: {
     static: {
