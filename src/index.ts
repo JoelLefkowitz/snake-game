@@ -1,7 +1,7 @@
 import { Scene } from "three";
-import { animate } from "./scene";
-import { createCameras } from "./camera";
-import { createRenderer } from "./renderer";
+import { animate } from "./services/scene";
+import { createCameras } from "./services/camera";
+import { createRenderer } from "./services/renderer";
 
 const scene = new Scene();
 const renderer = createRenderer();

@@ -24,5 +24,5 @@ gui.add(panel, "wireframe");
 gui.add(panel, "fog");
 gui.add(panel, "visible");
 
-gui.add(linePanel, "lines");
+gui.add(linePanel, "lines", 3, 20);
 gui.addColor(linePanel, "color");
