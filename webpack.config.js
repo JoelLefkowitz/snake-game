@@ -3,7 +3,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import CopyPlugin from "copy-webpack-plugin";
 
 export default {
-	mode:"development",
+  mode: "development",
   entry: "./src/index.ts",
   module: {
     rules: [
@@ -21,11 +21,9 @@ export default {
     new HtmlWebpackPlugin({
       template: "src/index.html",
     }),
-	new CopyPlugin({
-		patterns: [
-		  { from: "src/styles.css", to: "styles.css" },
-		],
-	  })
+    new CopyPlugin({
+      patterns: [{ from: "src/styles.css", to: "styles.css" }],
+    }),
   ],
   devServer: {
     static: {
@@ -35,6 +33,7 @@ export default {
     port: 9000,
   },
   output: {
+
     filename: "bundle.js",
     path: path.resolve("dist"),
   },

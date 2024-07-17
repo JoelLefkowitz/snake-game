@@ -4,29 +4,32 @@ import { snake } from "../domain/snake";
 
 export function registerEvents(): void {
   document.addEventListener("keydown", (event) => {
-	console.log(camera.rotation.x)
+    console.log(camera.rotation.x);
     if (
-      (camera.rotation.x > -Math.PI / 4-Math.PI/8 && camera.rotation.x < -Math.PI / 4 +Math.PI/8)
+      camera.rotation.x > -Math.PI / 4 - Math.PI / 8 &&
+      camera.rotation.x < -Math.PI / 4 + Math.PI / 8
     ) {
       console.log("Camera facing: N");
     }
     if (
-      (camera.rotation.x > -Math.PI*(3/4) - Math.PI / 8 &&
-        camera.rotation.x < -Math.PI*(3/4) + Math.PI / 8)
+      camera.rotation.x > -Math.PI * (3 / 4) - Math.PI / 8 &&
+      camera.rotation.x < -Math.PI * (3 / 4) + Math.PI / 8
     ) {
       console.log("Camera facing: S");
     }
     if (
       camera.rotation.x < 0 / 2 &&
       camera.rotation.x > -Math.PI &&
-      (camera.rotation.x < -Math.PI/2+Math.PI/4 && camera.rotation.x > -Math.PI / 4 - Math.PI/2)
+      camera.rotation.x < -Math.PI / 2 + Math.PI / 4 &&
+      camera.rotation.x > -Math.PI / 4 - Math.PI / 2
     ) {
       console.log("Camera facing: E");
     }
     if (
       camera.rotation.x > 0 &&
       camera.rotation.x < Math.PI &&
-      (camera.rotation.x > Math.PI / 2 - Math.PI/4 && camera.rotation.x < Math.PI/4 + Math.PI/2)
+      camera.rotation.x > Math.PI / 2 - Math.PI / 4 &&
+      camera.rotation.x < Math.PI / 4 + Math.PI / 2
     ) {
       console.log("Camera facing: W");
     }

@@ -1,4 +1,6 @@
-const gui = new (window as any).lil.GUI();
+import GUI from "lil-gui/dist/lil-gui.esm";
+
+const gui = new GUI();
 
 export const panel = {
   color: "#858585",
