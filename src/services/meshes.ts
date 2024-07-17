@@ -1,6 +1,6 @@
 import { BufferGeometry, Material, Mesh, Vector3 } from "three";
 import { baseMesh, gridMeshes } from "../domain/grid";
-import { snakeMesh } from "../domain/snake";
+import { snakeMesh, tailMesh } from "../domain/snake";
 
 export function createMesh(
   geometry: BufferGeometry,
@@ -15,5 +15,5 @@ export function createMesh(
 }
 
 export function createMeshes() {
-  return [...gridMeshes(), baseMesh(), snakeMesh()];
+  return [...gridMeshes(), baseMesh(), snakeMesh(), ...tailMesh()];
 }

@@ -22,22 +22,25 @@ export function detectDirection(): Direction {
   const vec = new Vector3();
   const { x, z } = camera.getWorldDirection(vec);
 
-  const angle = (180 * Math.atan2(x, z)) / Math.PI
-  console.log(angle)
-  if ((angle < 45 && angle > 0)|| (angle > -45 && angle < 0)) {
-	console.log('s')
-	return Direction.S
+  const angle = (180 * Math.atan2(x, z)) / Math.PI;
+  console.log(angle);
+  if ((angle < 45 && angle > 0) || (angle > -45 && angle < 0)) {
+    console.log("s");
+    return Direction.S;
   }
-  if ((angle < -180+45 && angle > -180) || (angle > 180-45 && angle < 180)) {
-	console.log('n')
-	return Direction.N
+  if (
+    (angle < -180 + 45 && angle > -180) ||
+    (angle > 180 - 45 && angle < 180)
+  ) {
+    console.log("n");
+    return Direction.N;
   }
-  if ((angle < 90+45 && angle > 90-45)) {
-	console.log('e')
-	return Direction.E
+  if (angle < 90 + 45 && angle > 90 - 45) {
+    console.log("e");
+    return Direction.E;
   }
-  if ((angle < -90+45 && angle > -90-45)) {
-	console.log('w')
-	return Direction.W
+  if (angle < -90 + 45 && angle > -90 - 45) {
+    console.log("w");
+    return Direction.W;
   }
 }

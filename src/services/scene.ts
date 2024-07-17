@@ -4,6 +4,7 @@ import { lights } from "./light";
 import { snake } from "../domain/snake";
 
 let elapsed = 0;
+
 export function animate(scene: Scene, camera: Camera, renderer: Renderer) {
   return (frameTime): void => {
     elapsed += frameTime;
