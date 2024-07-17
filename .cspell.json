@@ -10,6 +10,8 @@
   ],
   "ignorePaths": [".git"],
   "words": [
-	"metalness"
+	"metalness",
+	"pinst",
+	"postpack"
   ]
 }
