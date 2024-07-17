@@ -6,7 +6,7 @@ import {
 } from "three";
 import { createMesh } from "../services/meshes";
 import { linePanel, panel } from "../services/gui";
-import { range } from "lodash";
+import { pick, range } from "lodash";
 
 const baseSize = {
   height: 1,
@@ -19,7 +19,15 @@ const lineSize = {
 
 export const unit = linePanel.lines / 10;
 
-const lineMaterial = { ...panel, ...linePanel };
+const lineMaterial = pick({ ...panel, ...linePanel }, [
+  "color",
+  "emissive",
+  "roughness",
+  "metalness",
+  "wireframe",
+  "fog",
+  "visible",
+]);
 
 export function baseMesh() {
   const { lines } = linePanel;
