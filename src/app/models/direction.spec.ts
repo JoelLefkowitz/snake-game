@@ -1,4 +1,5 @@
-import { Direction, turn } from "./directions";
+import { Direction } from "../interfaces/directions";
+import { turn } from "./directions";
 
 describe("turn", () => {
   it("shifts the direction", () => {
@@ -8,18 +9,21 @@ describe("turn", () => {
       s: Direction.S,
       w: Direction.W,
     });
+
     expect(turn(Direction.E)).toEqual({
       n: Direction.E,
       e: Direction.S,
       s: Direction.W,
       w: Direction.N,
     });
+
     expect(turn(Direction.S)).toEqual({
       n: Direction.S,
       e: Direction.W,
       s: Direction.N,
       w: Direction.E,
     });
+
     expect(turn(Direction.W)).toEqual({
       n: Direction.W,
       e: Direction.N,

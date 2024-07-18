@@ -1,10 +1,9 @@
-import { Direction } from "./directions";
-export interface Position {
-  x: number;
-  y: number;
-}
+import { Direction } from "../interfaces/directions";
+import { Position } from "../interfaces/position";
+
 export class Snake {
   direction: Direction;
+
   head: Position;
   tail: Position[];
 
@@ -24,9 +23,12 @@ export class Snake {
 
   step() {
     const back = this.tail.pop();
+
     back.x = this.head.x;
     back.y = this.head.y;
+
     this.tail.unshift(back);
+
     if (this.direction == Direction.S) {
       this.head.y += 1;
     }

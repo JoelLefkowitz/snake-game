@@ -1,92 +1,38 @@
-import {
-  BoxGeometry,
-  CylinderGeometry,
-  Mesh,
-  MeshStandardMaterial,
-  Vector3,
-} from "three";
-import { LinePanel, linePanel, panel } from "../services/gui";
+import { CylinderGeometry, Mesh, MeshStandardMaterial, Vector3 } from "three";
 import { MeshHandler } from "../models/mesh-handler";
-import { baseSize, lineSize } from "./sizes";
+import { Panels } from "../interfaces/panels";
+import { dimensions } from "./dimensions";
+import { dispose, rotate, translate } from "../models/meshes";
 import { range } from "lodash";
+import { units } from "../services/gui";
 
-export const unit = linePanel.lines / 10;
+export const grid = new MeshHandler<Panels>((meshes, panels) => {
+  meshes.forEach((mesh) => {
+    dispose(mesh);
+  });
 
-export const base = new MeshHandler<LinePanel>((linePanel: LinePanel) => {
-  base.replace(
-    new BoxGeometry(
-      linePanel.lines * unit,
-      baseSize.height,
-      linePanel.lines * unit
-    )
-  );
-  new MeshStandardMaterial(panel);
-  return base;
-}, linePanel);
+  const unit = units();
+  const { lines } = panels.line;
+  const { radius } = dimensions.line;
+  const { height } = dimensions.base;
 
-export const grid = range(
-  -linePanel.lines / 2 + 1,
-  linePanel.lines / 2
-).flatMap((i) => [
-  new MeshHandler(
-    new Mesh(
-      new CylinderGeometry(
-        lineSize.radius,
-        lineSize.radius,
-        lineSize.length,
-        32
-      ),
-      new MeshStandardMaterial(panel)
-    ),
-    new Vector3(0, baseSize.height / 2 - 0.05, i * unit),
-    new Vector3(0, 0, Math.PI / 2),
-    (panel) => {}
-  ),
+  return range(-lines / 2 + 1, lines / 2).flatMap((i) => {
+    const horizontal = new Mesh(
+      new CylinderGeometry(radius, radius, lines * unit, 32),
+      new MeshStandardMaterial(panels.material),
+    );
 
-  new MeshHandler(
-    new Mesh(
-      new CylinderGeometry(
-        lineSize.radius,
-        lineSize.radius,
-        lineSize.length,
-        32
-      ),
-      new MeshStandardMaterial(lineMaterial)
-    ),
-    new Vector3(unit * i, baseSize.height / 2 - 0.05, 0),
-    new Vector3(0, Math.PI / 2, Math.PI / 2)
-  ),
-]);
+    translate(horizontal, new Vector3(0, height / 2 - 0.05, i * unit));
+    rotate(horizontal, new Vector3(0, 0, Math.PI / 2));
 
-// export function makeGridMeshes() {
-//   lineSize.length = linePanel.lines * unit;
-// }
+    const vertical = new Mesh(
+      new CylinderGeometry(radius, radius, lines * unit, 32),
+      new MeshStandardMaterial(panels.material),
+    );
 
-// export let gridMeshes = makeGridMeshes();
+    translate(vertical, new Vector3(unit * i, height / 2 - 0.05, 0));
+    rotate(vertical, new Vector3(0, Math.PI / 2, Math.PI / 2));
 
-// export function updateBase(scene) {
-//   const unit = linePanel.lines / 10;
-
-//   gridMeshes.forEach((mesh) => {
-//     scene.remove(scene.getObjectByName(mesh.mesh.id));
-//     gridMeshes.shift();
-//     mesh.dispose();
-//   });
-
-//   gridMeshes = makeGridMeshes();
-
-//   scene.add(baseMesh.mesh);
-
-//   gridMeshes.forEach((gridMesh) => {
-//     scene.add(gridMesh.mesh);
-//   });
-
-//   baseMesh.replace(
-//     new BoxGeometry(
-//       linePanel.lines * unit,
-//       baseSize.height,
-//       linePanel.lines * unit
-//     ),
-//     new MeshStandardMaterial(panel)
-//   );
-// }
+    return [horizontal, vertical];
+  });
+});

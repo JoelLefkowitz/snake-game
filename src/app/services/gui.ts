@@ -2,17 +2,7 @@ import GUI from "lil-gui/dist/lil-gui.esm";
 
 const gui = new GUI();
 
-export interface Panel {
-	color : string
-	emissive: number
-	roughness: number
-	metalness: number
-	wireframe: boolean
-	fog: boolean
-	visible: boolean
-}
-
-export const panel = {
+export const materialPanel = {
   color: "#858585",
   emissive: 0.2,
   roughness: 0.5,
@@ -22,23 +12,20 @@ export const panel = {
   visible: true,
 };
 
-export interface LinePanel {
-  color: string;
-  lines: number;
-}
+gui.addColor(materialPanel, "color");
+gui.add(materialPanel, "emissive", 0, 1);
+gui.add(materialPanel, "roughness", 0, 1);
+gui.add(materialPanel, "metalness", 0, 1);
+gui.add(materialPanel, "wireframe");
+gui.add(materialPanel, "fog");
+gui.add(materialPanel, "visible");
 
 export const linePanel = {
   color: "#858585",
   lines: 12,
 };
 
-gui.addColor(panel, "color");
-gui.add(panel, "emissive", 0, 1);
-gui.add(panel, "roughness", 0, 1);
-gui.add(panel, "metalness", 0, 1);
-gui.add(panel, "wireframe");
-gui.add(panel, "fog");
-gui.add(panel, "visible");
+export const units = () => linePanel.lines / 10;
 
 gui.add(linePanel, "lines", 3, 20);
 gui.addColor(linePanel, "color");
