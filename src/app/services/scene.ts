@@ -7,6 +7,7 @@ import { linePanel, materialPanel } from "./gui";
 import { tail } from "../meshes/tail";
 
 let elapsed = 0;
+let lastFrametime = 0;
 
 export function animate(
   scene: Scene,
@@ -14,9 +15,10 @@ export function animate(
   renderer: Renderer,
 ): (frametime: number) => void {
   return (frametime: number) => {
-    elapsed += frametime;
+    elapsed += frametime - lastFrametime;
+    lastFrametime = frametime;
 
-    if (elapsed >= 100000) {
+    if (elapsed >= 60) {
       elapsed = 0;
       snake.step();
     }

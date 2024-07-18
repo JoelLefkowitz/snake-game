@@ -6,7 +6,7 @@ export const dimensions = {
     radius: 0.1,
   },
   snake: {
-    radius: 0.5,
+    radius: 0.8,
     length: 1,
   },
 };

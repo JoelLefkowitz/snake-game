@@ -10,9 +10,12 @@ export class Snake {
   constructor(
     head = { x: 4, y: 4 },
     tail = [
+      { x: 4, y: 5 },
+      { x: 4, y: 4 },
       { x: 4, y: 3 },
       { x: 4, y: 2 },
       { x: 4, y: 1 },
+      { x: 4, y: 0 },
     ],
     direction = Direction.S,
   ) {
