@@ -1,5 +1,5 @@
 import { detectDirection } from "./camera";
-import { snake } from "../meshes/snake";
+import { snake } from "../meshes/head";
 import { turn } from "../models/directions";
 
 export function registerEvents(): void {

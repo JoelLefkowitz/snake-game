@@ -1,16 +1,4 @@
-export enum Direction {
-  N,
-  E,
-  S,
-  W,
-}
-
-export interface RelativeDirections {
-  n: Direction;
-  e: Direction;
-  s: Direction;
-  w: Direction;
-}
+import { Direction, RelativeDirections } from "../interfaces/directions";
 
 export function turn(cameraDirection: Direction): RelativeDirections {
   const directions = [Direction.N, Direction.E, Direction.S, Direction.W];

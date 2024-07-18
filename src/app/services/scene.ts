@@ -1,15 +1,17 @@
-import { Camera, Renderer, Scene, Vector3 } from "three";
+import { Camera, Renderer, Scene } from "three";
+import { base } from "../meshes/base";
+import { grid } from "../meshes/grid";
+import { head, snake } from "../meshes/head";
 import { lights } from "./light";
-import { lines, snake } from "../meshes/snake";
-import { meshes } from "../meshes/collect";
-import { unit } from "../meshes/grid";
+import { linePanel, materialPanel } from "./gui";
+import { tail } from "../meshes/tail";
 
 let elapsed = 0;
 
 export function animate(
   scene: Scene,
   camera: Camera,
-  renderer: Renderer
+  renderer: Renderer,
 ): (frametime: number) => void {
   return (frametime: number) => {
     elapsed += frametime;
@@ -19,28 +21,24 @@ export function animate(
       snake.step();
     }
 
-    const current = meshes();
+    const panels = {
+      material: materialPanel,
+      line: linePanel,
+    };
 
-    const x = (snake.head.x - lines / 2 + unit / 2) * unit;
-    const y = (snake.head.y - lines / 2 + unit / 2) * unit;
+    base.update(panels);
+    grid.update(panels);
 
-    // current.head.translate(new Vector3(x, unit, y));
+    head.update({ panels, position: snake.head });
+    tail.update({ panels, positions: snake.tail });
 
-    lights.forEach((light) => {
-      scene.add(light);
-    });
+    scene.clear();
 
-    scene.add(current.base.mesh);
+    lights.forEach((light) => scene.add(light));
 
-    current.grid.forEach(({ mesh }) => {
-      scene.add(mesh);
-    });
-
-    scene.add(current.head.mesh);
-
-    current.tail.forEach(({ mesh }) => {
-      scene.add(mesh);
-    });
+    [base, grid, head, tail].forEach((handler) =>
+      handler.meshes.forEach((mesh) => scene.add(mesh)),
+    );
 
     renderer.render(scene, camera);
   };
