@@ -13,7 +13,7 @@ export class Snake {
     tail = [
       { x: 4, y: 3 },
       { x: 4, y: 2 },
-	  {x: 4, y: 1}
+      { x: 4, y: 1 },
     ],
     direction = Direction.S,
   ) {

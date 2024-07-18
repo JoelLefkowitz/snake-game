@@ -7,7 +7,8 @@ import { registerEvents } from "./services/events";
 const scene = new Scene();
 const renderer = createRenderer();
 const camera = createCameras(renderer);
-registerEvents()
+
+registerEvents();
 
 renderer.setAnimationLoop(animate(scene, camera, renderer));
 document.body.appendChild(renderer.domElement);

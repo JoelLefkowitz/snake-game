@@ -4,7 +4,7 @@ import CopyPlugin from "copy-webpack-plugin";
 
 export default {
   mode: "development",
-  entry: "./src/index.ts",
+  entry: "./src/app/index.ts",
   module: {
     rules: [
       {
@@ -19,10 +19,10 @@ export default {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "src/index.html",
+      template: "src/app/index.html",
     }),
     new CopyPlugin({
-      patterns: [{ from: "src/styles.css", to: "styles.css" }],
+      patterns: [{ from: "src/app/styles.css", to: "styles.css" }],
     }),
   ],
   devServer: {
@@ -33,8 +33,7 @@ export default {
     port: 9000,
   },
   output: {
-
     filename: "bundle.js",
-    path: path.resolve("dist"),
+    path: path.resolve("dist/app"),
   },
 };

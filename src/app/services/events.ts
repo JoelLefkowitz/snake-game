@@ -1,6 +1,6 @@
-import { turn } from "../models/directions";
 import { detectDirection } from "./camera";
-import { snake } from "../domain/snake";
+import { snake } from "../meshes/snake";
+import { turn } from "../models/directions";
 
 export function registerEvents(): void {
   document.addEventListener("keydown", (event) => {
