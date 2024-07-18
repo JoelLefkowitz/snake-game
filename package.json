@@ -13,7 +13,7 @@
     "test": "jest",
     "start-app": "webpack serve",
     "start-server": "tsc -p . && node dist/server/main.cjs",
-    "deploy": "webpack --mode production && aws s3 sync dist/app s3://attachment-snake-game"
+    "deploy": "webpack && aws s3 sync dist/app s3://attachment-snake-game"
   },
   "author": "",
   "license": "ISC",
