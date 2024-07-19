@@ -1,14 +1,18 @@
 import { Camera, Renderer, Scene } from "three";
+import { FruitGenerator } from "../models/fruit-generator";
 import { base } from "../meshes/base";
 import { fruit } from "../meshes/fruit";
 import { grid } from "../meshes/grid";
 import { head, snake } from "../meshes/head";
+import { isOverlapping } from "../models/mesh-handler";
 import { lights } from "./light";
 import { linePanel, materialPanel } from "./gui";
 import { tail } from "../meshes/tail";
 
 let elapsed = 0;
 let lastFrametime = 0;
+
+const fruitGenerator = new FruitGenerator()
 
 export function animate(
   scene: Scene,
@@ -21,7 +25,7 @@ export function animate(
 
     if (elapsed >= 100) {
       elapsed = 0;
-      snake.step();
+      snake.step(isOverlapping(snake.head, fruitGenerator.current))
     }
 
     const panels = {
@@ -35,7 +39,7 @@ export function animate(
     head.update({ panels, position: snake.head });
     tail.update({ panels, positions: snake.tail });
 
-	fruit.update({position: {x: 1, y: 1}, panels})
+	fruit.update({position: fruitGenerator.current, panels})
 
     scene.clear();
 

@@ -1,4 +1,4 @@
-import {Mesh, MeshStandardMaterial, SphereGeometry, Vector3 } from "three";
+import {Mesh, MeshPhysicalMaterial, SphereGeometry, Vector3 } from "three";
 import { MeshHandler } from "../models/mesh-handler";
 import { Panels } from "../interfaces/panels";
 import { Position } from "../interfaces/position";
@@ -16,7 +16,7 @@ export const tail = new MeshHandler<{ panels: Panels; positions: Position[] }>(
     const { lines } = panels.line;
 
     return positions.map((position) => {
-      const mesh = new Mesh(new SphereGeometry(dimensions.snake.radius), new MeshStandardMaterial(panels.material));
+      const mesh = new Mesh(new SphereGeometry(dimensions.snake.radius), new MeshPhysicalMaterial(panels.material));
 
       const x = (position.x - lines / 2 + unit / 2) * unit;
       const y = (position.y - lines / 2 + unit / 2) * unit;

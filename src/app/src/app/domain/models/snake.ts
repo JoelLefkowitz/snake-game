@@ -24,7 +24,7 @@ export class Snake {
     this.direction = direction;
   }
 
-  step() {
+  step(eating: boolean = false) {
     if (this.head.x === 11 && this.direction == Direction.E
 	) {
       this.head.x = 0;
@@ -43,6 +43,10 @@ export class Snake {
 		return
 	}
     const back = this.tail.pop();
+
+	if (eating) {
+		this.tail.push({...back})
+	}
 
     back.x = this.head.x;
     back.y = this.head.y;
