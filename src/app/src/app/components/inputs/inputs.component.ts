@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { InputsService } from './inputs.service';
 
 @Component({
   selector: 'app-inputs',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './inputs.component.css'
 })
 export class InputsComponent {
+constructor(private inputsService: InputsService) {
+}
+ngOnInit() {
+	console.log(this.inputsService.lines)
 
+	
+}
 }

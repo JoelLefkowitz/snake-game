@@ -9,9 +9,9 @@
     "prepack": "pinst --disable",
     "postpack": "pinst --enable",
     "lint": "cspell . --dot --gitignore && tsc --noEmit && eslint . --fix",
-    "format": "prettier --write src/**/*.ts",
+    "format": "prettier --write src/**/*.{ts,html,css}",
     "test": "jest",
-    "deploy": "aws s3 sync dist/app s3://attachment-snake-game"
+    "deploy": "aws s3 sync dist/app/browser s3://attachment-snake-game"
   },
   "author": "",
   "license": "ISC",

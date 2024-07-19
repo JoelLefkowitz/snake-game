@@ -18,10 +18,16 @@ export class CanvasComponent {
 		const camera = createCameras(renderer);
 	
 		registerEvents();
-	
+		const {domElement} = renderer
 		renderer.setAnimationLoop(animate(scene, camera, renderer));
-		renderer.domElement.style.width = `${window.innerWidth/2}px`;
-		renderer.domElement.style.height = `${window.innerHeight/2}px`;
-		document.getElementById("canvas-container").appendChild(renderer.domElement);
+		
+		domElement.style.width = `${window.innerWidth/2}px`;
+		
+		domElement.style.height = `${window.innerHeight/2}px`;
+
+		domElement.style.position = 'relative';
+		domElement.style.margin = 'auto';
+		domElement.style.borderRadius = "20px";
+		document.getElementById("canvas-container").appendChild(domElement);
 	  }
 }
