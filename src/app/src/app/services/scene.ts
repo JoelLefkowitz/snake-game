@@ -5,6 +5,7 @@ import { head, snake } from "../meshes/head";
 import { lights } from "./light";
 import { linePanel, materialPanel } from "./gui";
 import { tail } from "../meshes/tail";
+import { fruit } from "../meshes/fruit";
 
 let elapsed = 0;
 let lastFrametime = 0;
@@ -34,11 +35,13 @@ export function animate(
     head.update({ panels, position: snake.head });
     tail.update({ panels, positions: snake.tail });
 
+	fruit.update({x: 1, y: 1})
+
     scene.clear();
 
     lights.forEach((light) => scene.add(light));
 
-    [base, grid, head, tail].forEach((handler) =>
+    [base, grid, head, tail, fruit].forEach((handler) =>
       handler.meshes.forEach((mesh) => scene.add(mesh)),
     );
 
