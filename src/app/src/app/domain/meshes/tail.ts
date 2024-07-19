@@ -2,9 +2,9 @@ import {Mesh, MeshStandardMaterial, SphereGeometry, Vector3 } from "three";
 import { MeshHandler } from "../models/mesh-handler";
 import { Panels } from "../interfaces/panels";
 import { Position } from "../interfaces/position";
+import { dimensions } from "./dimensions";
 import { dispose, translate } from "../models/meshes";
 import { units } from "../services/gui";
-import { dimensions } from "./dimensions";
 
 export const tail = new MeshHandler<{ panels: Panels; positions: Position[] }>(
   (meshes, { panels, positions }) => {

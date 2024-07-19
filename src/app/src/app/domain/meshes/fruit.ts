@@ -1,9 +1,9 @@
 import { BoxGeometry, Color, Mesh, MeshPhysicalMaterial, Vector3 } from "three";
 import { MeshHandler } from "../models/mesh-handler";
+import { Panels } from "../interfaces/panels";
 import { Position } from "../interfaces/position";
 import { dispose, translate } from "../models/meshes";
 import { units } from "../services/gui";
-import { Panels } from "../interfaces/panels";
 
 export const fruit = new MeshHandler<{position: Position | null, panels: Panels}>((meshes, {position, panels}) => {
 	meshes.forEach((mesh) => {

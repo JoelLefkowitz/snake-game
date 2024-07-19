@@ -1,10 +1,10 @@
 import { Mesh, MeshPhysicalMaterial } from "three";
 import { MeshHandler } from "../models/mesh-handler";
 import { Panels } from "../interfaces/panels";
+import { RoundedBoxGeometry } from "three/examples/jsm/Addons.js";
 import { dimensions } from "./dimensions";
 import { dispose } from "../models/meshes";
 import { units } from "../services/gui";
-import { RoundedBoxGeometry } from "three/examples/jsm/Addons.js";
 
 export const base = new MeshHandler<Panels>((meshes, panels) => {
   meshes.forEach((mesh) => {
