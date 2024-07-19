@@ -8,7 +8,7 @@
     "misc",
     "softwareTerms"
   ],
-  "ignorePaths": [".git"],
+  "ignorePaths": [".git", ".angular"],
   "words": [
 	"frametime",
 	"metalness",
