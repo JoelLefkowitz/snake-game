@@ -1,9 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "moduleResolution": "node",
-	"esModuleInterop":true,
-    "outDir": "./dist",
+	"esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": false,
   }
 }

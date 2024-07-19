@@ -25,6 +25,8 @@ export class AppComponent {
     registerEvents();
 
     renderer.setAnimationLoop(animate(scene, camera, renderer));
-    document.body.appendChild(renderer.domElement);
+    renderer.domElement.style.width = `${window.innerWidth/2}px`;
+    renderer.domElement.style.height = `${window.innerHeight/2}px`;
+    document.getElementById("canvas-container").appendChild(renderer.domElement);
   }
 }

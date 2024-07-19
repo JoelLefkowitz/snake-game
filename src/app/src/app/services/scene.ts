@@ -1,11 +1,11 @@
 import { Camera, Renderer, Scene } from "three";
 import { base } from "../meshes/base";
+import { fruit } from "../meshes/fruit";
 import { grid } from "../meshes/grid";
 import { head, snake } from "../meshes/head";
 import { lights } from "./light";
 import { linePanel, materialPanel } from "./gui";
 import { tail } from "../meshes/tail";
-import { fruit } from "../meshes/fruit";
 
 let elapsed = 0;
 let lastFrametime = 0;

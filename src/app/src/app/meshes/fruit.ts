@@ -1,10 +1,8 @@
-import { BoxGeometry, Mesh, MeshNormalMaterial, MeshStandardMaterial, Vector3 } from "three";
-import { Panels } from "../interfaces/panels";
-import { Position } from "../interfaces/position";
+import { BoxGeometry, Mesh, MeshNormalMaterial, Vector3 } from "three";
 import { MeshHandler } from "../models/mesh-handler";
+import { Position } from "../interfaces/position";
 import { dispose, translate } from "../models/meshes";
 import { units } from "../services/gui";
-import { dimensions } from "./dimensions";
 
 export const fruit = new MeshHandler<Position | null>((meshes, position) => {
 	meshes.forEach((mesh) => {
