@@ -5,10 +5,12 @@ const gui = new GUI();
 export const materialPanel = {
   color: "#858585",
   emissive: 0.2,
-  roughness: 0.5,
-  metalness: 0.5,
+  roughness: 0.65,
+  metalness: 0.4,
   wireframe: false,
-  fog: false,
+  clearcoatRoughness: 0.7,
+  clearcoat: 0.6,
+  fog: true,
   visible: true,
 };
 

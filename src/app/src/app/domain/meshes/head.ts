@@ -1,4 +1,4 @@
-import { Mesh, MeshStandardMaterial, SphereGeometry, Vector3 } from "three";
+import { Color, Mesh, MeshPhysicalMaterial, SphereGeometry, Vector3 } from "three";
 import { MeshHandler } from "../models/mesh-handler";
 import { Panels } from "../interfaces/panels";
 import { Position } from "../interfaces/position";
@@ -17,16 +17,19 @@ export const head = new MeshHandler<{ panels: Panels; position: Position }>(
 
     const unit = units();
     const { lines } = panels.line;
-
+	const material = new MeshPhysicalMaterial(panels.material)
+	material.color = new Color(0,255,0)
     const mesh = new Mesh(
       new SphereGeometry(dimensions.snake.radius),
-      new MeshStandardMaterial(),
-    );
+	material
+);
 
     const x = (position.x - lines / 2 + unit / 2) * unit;
     const y = (position.y - lines / 2 + unit / 2) * unit;
 
     translate(mesh, new Vector3(x, unit, y));
+
+	mesh.castShadow = true
 
     return [mesh];
   },

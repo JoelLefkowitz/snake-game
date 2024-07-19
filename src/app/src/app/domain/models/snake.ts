@@ -17,7 +17,7 @@ export class Snake {
       { x: 4, y: 1 },
       { x: 4, y: 0 },
     ],
-    direction = Direction.S,
+    direction = Direction.S
   ) {
     this.head = head;
     this.tail = tail;
@@ -25,6 +25,23 @@ export class Snake {
   }
 
   step() {
+    if (this.head.x === 11 && this.direction == Direction.E
+	) {
+      this.head.x = 0;
+      return;
+    }
+    if (this.head.x === 0 && this.direction == Direction.W) {
+      this.head.x = 11;
+      return;
+    }
+	if (this.head.y === 11 && this.direction == Direction.S) {
+		this.head.y = 0
+		return
+	}
+	if (this.head.y === 0 && this.direction == Direction.N) {
+		this.head.y = 11
+		return
+	}
     const back = this.tail.pop();
 
     back.x = this.head.x;

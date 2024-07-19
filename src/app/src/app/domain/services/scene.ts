@@ -19,7 +19,7 @@ export function animate(
     elapsed += frametime - lastFrametime;
     lastFrametime = frametime;
 
-    if (elapsed >= 60) {
+    if (elapsed >= 100) {
       elapsed = 0;
       snake.step();
     }
@@ -35,7 +35,7 @@ export function animate(
     head.update({ panels, position: snake.head });
     tail.update({ panels, positions: snake.tail });
 
-	fruit.update({x: 1, y: 1})
+	fruit.update({position: {x: 1, y: 1}, panels})
 
     scene.clear();
 

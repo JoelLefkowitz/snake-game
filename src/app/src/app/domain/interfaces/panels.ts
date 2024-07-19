@@ -4,6 +4,8 @@ export interface MaterialPanel {
   roughness: number;
   metalness: number;
   wireframe: boolean;
+  clearcoat: number;
+  clearcoatRoughness: number,
   fog: boolean;
   visible: boolean;
 }
