@@ -1,4 +1,9 @@
 body {
-	margin: 0px;
-  }
-  
+  margin: 0px;
+  background-color: #2F2F2F;
+}
+
+.lil-gui {
+	position: relative;
+	margin:auto;
+}

@@ -1,0 +1,64 @@
+{
+  "hash": "53c5b853",
+  "configHash": "d003effd",
+  "lockfileHash": "c95608d0",
+  "browserHash": "b5846a6b",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "2bc5200e",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "10ffa7fb",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "d71f9b01",
+      "needsInterop": false
+    },
+    "lil-gui/dist/lil-gui.esm": {
+      "src": "../../../../../../../node_modules/lil-gui/dist/lil-gui.esm.js",
+      "file": "lil-gui_dist_lil-gui__esm.js",
+      "fileHash": "3ece9220",
+      "needsInterop": false
+    },
+    "lodash": {
+      "src": "../../../../../../../node_modules/lodash/lodash.js",
+      "file": "lodash.js",
+      "fileHash": "8ebaf45f",
+      "needsInterop": true
+    },
+    "three": {
+      "src": "../../../../../../../node_modules/three/build/three.module.js",
+      "file": "three.js",
+      "fileHash": "da61f75d",
+      "needsInterop": false
+    },
+    "three/examples/jsm/controls/OrbitControls.js": {
+      "src": "../../../../../../../node_modules/three/examples/jsm/controls/OrbitControls.js",
+      "file": "three_examples_jsm_controls_OrbitControls__js.js",
+      "fileHash": "1d84bdad",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-BSRKAM5C": {
+      "file": "chunk-BSRKAM5C.js"
+    },
+    "chunk-PPKWECU5": {
+      "file": "chunk-PPKWECU5.js"
+    },
+    "chunk-GYY6GQSL": {
+      "file": "chunk-GYY6GQSL.js"
+    },
+    "chunk-3OV72XIM": {
+      "file": "chunk-3OV72XIM.js"
+    }
+  }
+}
